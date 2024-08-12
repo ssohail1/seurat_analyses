@@ -1,55 +1,17 @@
-# before Seurat - downloading data from Single-cell RNA sequencing reveals myeloid and T cell co-stimulation mediated by IL-7 anti-cancer immunotherapy study
-# bioproject number is PRJNA844355; GEO: GSE205307
-
-# got accession list from https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP378029&o=acc_s%3Aa for sra files
-# ran the following to retrieve sra data with prefetch:
-
-# for sample in $(cat SRR_Acc_List.txt):
-#   do
-## ~/sratoolkit.3.0.7-mac64/bin/prefetch ${sample}
-# prefetch ${sample}
-# done
-
-# for sample in $(cat SRR_Acc_List.txt):
-# do
-# fastq-dump -I --split-files ~/Downloads/lungCan_data_seurat/${sample}/${sample}.sra
-# done
-
-
-
-
-
 library(dplyr)
 library(Seurat)
 library(patchwork)
 library(ggplot2)
 
 # Load the PBMC dataset
-# pbmc.data <- Read10X(data.dir = "~/Downloads/filtered_gene_bc_matrices/hg19/") # data from the Seurat Guided tutorial
-# pbmc.data <- Read10X(data.dir = "~/Downloads/lungCan_data_seurat/")#GSE131907_Lung_Cancer_normalized_log2TPM_matrix.rds.gz") # data from the Seurat Guided tutorial
-# 
-# pbmc_raw <- read.table(
-#   file = system.file('extdata', 'pbmc_raw.txt', package = 'Seurat'),
-#   as.is = TRUE
-# )
-# gsemouse <- read_table("~/Downloads/lungCan_data_seurat/GSE131907_Lung_Cancer_raw_UMI_matrix.rds.gz")
-
-gsemouse <- read.delim("~/Downloads/lungCan_data_seurat/GSE131907_Lung_Cancer_raw_UMI_matrix.txt")
+# pbmc.data <- Read10X(data.dir = "~/Downloads/filtered_gene_bc_matrices/hg19/") # pbmc data folder
 
 # Initialize the Seurat object with the raw (non-normalized data).
-# pbmc <- CreateSeuratObject(counts = pbmc.data, project = "pbmc3k", min.cells = 3, min.features = 200)
+# pbmc <- CreateSeuratObject(counts = pbmc.data, project = "pbmc", min.cells = 3, min.features = 200)
 # pbmc
-
-gsemo <- CreateSeuratObject(counts = gsemouse)
-gsemo
 
 # The [[ operator can add columns to object metadata. This is a great place to stash QC stats
 pbmc[["percent.mt"]] <- PercentageFeatureSet(pbmc, pattern = "^MT-")
-# An object of class Seurat 
-# 13714 features across 2700 samples within 1 assay 
-# Active assay: RNA (13714 features, 0 variable features)
-# 1 layer present: counts
-
 
 # Visualize QC metrics as a violin plot
 VlnPlot(pbmc, features = c("nCount_RNA", "nFeature_RNA", "percent.mt"), ncol = 3)
