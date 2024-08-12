@@ -163,12 +163,12 @@ VlnPlot(pbmc, features = c("MS4A1", "CD79A"))
 # you can plot raw counts as well
 VlnPlot(pbmc, features = c("NKG7", "PF4"), slot = "counts", log = TRUE)
 
-# Warning message:
-#   The `slot` argument of `VlnPlot()` is deprecated as of Seurat 5.0.0.
-# ℹ Please use the `layer` argument instead.
-# This warning is displayed once every 8 hours.
-# Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-# generated.
+## Warning message:
+##   The `slot` argument of `VlnPlot()` is deprecated as of Seurat 5.0.0.
+## ℹ Please use the `layer` argument instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
 # so use this instead:
 VlnPlot(pbmc, features = c("NKG7", "PF4"), layer = "counts", log = TRUE)
 
@@ -191,7 +191,7 @@ DimPlot(pbmc, reduction = "umap", label = TRUE, pt.size = 0.5) + NoLegend()
 library(ggplot2)
 plot <- DimPlot(pbmc, reduction = "umap", label = TRUE, label.size = 4.5) + xlab("UMAP 1") + ylab("UMAP 2") +
   theme(axis.title = element_text(size = 18), legend.text = element_text(size = 18)) + guides(colour = guide_legend(override.aes = list(size = 10)))
-ggsave(filename = "~/Downloads/filtered_gene_bc_matrices/output/images/pbmc3k_umap.jpg", height = 7, width = 12, plot = plot, quality = 50)
+ggsave(filename = "~/Downloads/filtered_gene_bc_matrices/output/images/pbmc_umap.jpg", height = 7, width = 12, plot = plot, quality = 50)
 
 
 
