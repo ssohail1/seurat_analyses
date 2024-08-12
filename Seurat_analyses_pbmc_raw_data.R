@@ -543,7 +543,24 @@ pbmc <- RenameIdents(pbmc, new.cluster.ids)
 DimPlot(pbmc, reduction = "umap", label = TRUE, pt.size = 0.5, label.size = 6) + NoLegend()
 
 
+## replicate with full single-cell dataset
+               
+# Before Seurat - downloading data from Single-cell RNA sequencing reveals myeloid and T cell co-stimulation mediated by IL-7 anti-cancer immunotherapy study
+# bioproject number is PRJNA844355; GEO: GSE205307
 
+# got accession list from https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP378029&o=acc_s%3Aa for sra files
+# ran the following to retrieve sra data with prefetch:
+
+# for sample in $(cat SRR_Acc_List.txt):
+#   do
+## ~/sratoolkit.3.0.7-mac64/bin/prefetch ${sample}
+# prefetch ${sample}
+# done
+
+# for sample in $(cat SRR_Acc_List.txt):
+# do
+# fastq-dump -I --split-files ~/Downloads/lungCan_data_seurat/${sample}/${sample}.sra
+# done
 
 
 
