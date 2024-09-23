@@ -4,13 +4,13 @@ library(patchwork)
 library(ggplot2)
 
 # Load the PBMC dataset
-# pbmc.data <- Read10X(data.dir = "~/Downloads/filtered_gene_bc_matrices/hg19/") # pbmc data folder
+pbmc.data <- Read10X(data.dir = "./filtered_gene_bc_matrices/hg19/") # pbmc data folder
 
 # Initialize the Seurat object with the raw (non-normalized data).
-# pbmc <- CreateSeuratObject(counts = pbmc.data, project = "pbmc", min.cells = 3, min.features = 200)
+pbmc <- CreateSeuratObject(counts = pbmc.data, project = "pbmc", min.cells = 3, min.features = 200)
 # pbmc
 
-# The [[ operator can add columns to object metadata. This is a great place to stash QC stats
+# The [[ operator can add columns to object metadata. This is a great place for QC stats
 pbmc[["percent.mt"]] <- PercentageFeatureSet(pbmc, pattern = "^MT-")
 
 # Visualize QC metrics as a violin plot
