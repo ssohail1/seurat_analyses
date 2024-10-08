@@ -525,14 +525,3 @@ DimPlot(pbmc, reduction = "umap", label = TRUE, pt.size = 0.5, label.size = 6) +
 # done
 
 
-
-
-
-
-
-
-
-
-
-
-
