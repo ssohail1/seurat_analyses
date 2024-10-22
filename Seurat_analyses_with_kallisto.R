@@ -1,4 +1,4 @@
-#### with Kallisto ####
+#### Seurat with Kallisto ####
 # libraries
 library(Seurat)
 library(Matrix)
