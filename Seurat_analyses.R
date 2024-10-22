@@ -136,21 +136,13 @@ pbmc.markers %>%
 cluster0.markers <- FindMarkers(pbmc, ident.1 = 0, logfc.threshold = 0.25, test.use = "roc", only.pos = TRUE)
 VlnPlot(pbmc, features = c("MS4A1", "CD79A"))
 
-# you can plot raw counts as well
-VlnPlot(pbmc, features = c("NKG7", "PF4"), slot = "counts", log = TRUE)
-
-## Warning message:
-##   The `slot` argument of `VlnPlot()` is deprecated as of Seurat 5.0.0.
-## ℹ Please use the `layer` argument instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-## generated.
-# so use this instead:
+# plot raw counts as violin plots
 VlnPlot(pbmc, features = c("NKG7", "PF4"), layer = "counts", log = TRUE)
 
 FeaturePlot(pbmc, features = c("MS4A1", "GNLY", "CD3E", "CD14", "FCER1A", "FCGR3A", "LYZ", "PPBP",
                                "CD8A"))
 
+# plot heatmap of top 10 genes
 pbmc.markers %>%
   group_by(cluster) %>%
   dplyr::filter(avg_log2FC > 1) %>%
