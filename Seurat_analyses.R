@@ -4,7 +4,7 @@ library(patchwork)
 library(ggplot2)
 
 # Load the PBMC dataset
-pbmc.data <- Read10X(data.dir = "./filtered_gene_bc_matrices/hg19/") # pbmc data folder
+pbmc.data <- Read10X(data.dir = "./data") # pbmc data folder
 
 # Initialize the Seurat object with the raw (non-normalized data).
 pbmc <- CreateSeuratObject(counts = pbmc.data, project = "pbmc", min.cells = 3, min.features = 200)
@@ -23,9 +23,6 @@ plot1 <- FeatureScatter(pbmc, feature1 = "nCount_RNA", feature2 = "percent.mt")
 plot2 <- FeatureScatter(pbmc, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
 plot1 + plot2
 # An object of class Seurat 
-# 13714 features across 2638 samples within 1 assay 
-# Active assay: RNA (13714 features, 0 variable features)
-# 1 layer present: counts
 
 
 pbmc <- subset(pbmc, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent.mt < 5)
@@ -37,6 +34,9 @@ pbmc <- subset(pbmc, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent
 
 pbmc <- NormalizeData(pbmc, normalization.method = "LogNormalize", scale.factor = 10000) # with the default parameters
 
+#'vst' method = relationship of log(variance) and log(mean) using loess
+# Then standardizes the feature values using the observed mean and expected variance (given by the fitted line)
+# Feature variance is calculated on the standardized values after clipping to a maximum
 pbmc <- FindVariableFeatures(pbmc, selection.method = "vst", nfeatures = 2000)
 # Finding variable features for layer counts
 # Calculating gene variances
@@ -48,7 +48,6 @@ pbmc <- FindVariableFeatures(pbmc, selection.method = "vst", nfeatures = 2000)
 # [----|----|----|----|----|----|----|----|----|----|
 # **************************************************|
 
-
 # Identify the 10 most highly variable genes
 top10 <- head(VariableFeatures(pbmc), 10)
 
@@ -57,12 +56,12 @@ plot1 <- VariableFeaturePlot(pbmc)
 plot2 <- LabelPoints(plot = plot1, points = top10, repel = TRUE)
 plot1 + plot2
 
-all.genes <- rownames(pbmc)
+all.genes <- rownames(pbmc) # genes are rows
 pbmc <- ScaleData(pbmc, features = all.genes)
-# to remove unwanted sources of variation
-# we can regress out heterogeneity
+
+# to remove unwanted sources of variation regress out heterogeneity
 pbmc <- ScaleData(pbmc, vars.to.regress = "percent.mt")
-pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc))
+pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc)) # runpca = pca for seurat object
 
 # Examine and visualize PCA results a few different ways
 print(pbmc[["pca"]], dims = 1:5, nfeatures = 5)
@@ -80,7 +79,7 @@ pbmc <- FindClusters(pbmc, resolution = 0.5)
 # Look at cluster IDs of the first 5 cells
 head(Idents(pbmc), 5)
 
-
+# Runs the Uniform Manifold Approximation and Projection (UMAP) dimensional reduction technique 
 pbmc <- RunUMAP(pbmc, dims = 1:10)
 # note that you can set `label = TRUE` or use the LabelClusters function to help label
 # individual clusters
@@ -115,47 +114,24 @@ saveRDS(pbmc, file = "~/Downloads/filtered_gene_bc_matrices/output/pbmc_tutorial
 # find all markers of cluster 2
 cluster2.markers <- FindMarkers(pbmc, ident.1 = 2)
 head(cluster2.markers, n = 5)
-# p_val avg_log2FC pct.1 pct.2    p_val_adj
-# LTB  1.709675e-83   1.330256 0.982 0.647 2.344648e-79
-# IL32 5.076510e-83   1.242930 0.947 0.471 6.961926e-79
-# LDHB 2.467055e-68   1.044820 0.967 0.615 3.383320e-64
-# CD3D 1.817480e-66   1.058609 0.920 0.438 2.492492e-62
-# IL7R 8.698894e-61   1.389909 0.744 0.333 1.192966e-56
+# columns are p_val   avg_log2FC   pct.1   pct.2    p_val_adj
 
-# find all markers distinguishing cluster 5 from clusters 0 and 3
+# finding all markers distinguishing cluster 5 from clusters 0 and 3
 cluster5.markers <- FindMarkers(pbmc, ident.1 = 5, ident.2 = c(0, 3))
 head(cluster5.markers, n = 5)
 
-# p_val avg_log2FC pct.1 pct.2     p_val_adj
-# FCGR3A        5.972471e-204   6.795991 0.975 0.041 8.190647e-200
-# IFITM3        5.671364e-195   6.201036 0.975 0.048 7.777708e-191
-# CFD           2.389538e-193   6.081028 0.937 0.038 3.277012e-189
-# CD68          1.800066e-189   5.472200 0.925 0.036 2.468611e-185
-# RP11-290F20.3 6.852416e-189   6.390800 0.843 0.015 9.397404e-185
-
-# find markers for every cluster compared to all remaining cells, report only the positive
-# ones
+# find markers for every cluster compared to all remaining cells, report only the positive ones
 pbmc.markers <- FindAllMarkers(pbmc, only.pos = TRUE)
+
+# group pbmc.markers by cluster and keep rows that are avg_log2FC > 1
 pbmc.markers %>%
   group_by(cluster) %>%
   dplyr::filter(avg_log2FC > 1)
 
 # # A tibble: 7,024 × 7
 # # Groups:   cluster [9]
-# p_val avg_log2FC pct.1 pct.2 p_val_adj cluster gene     
-# <dbl>      <dbl> <dbl> <dbl>     <dbl> <fct>   <chr>    
-#   1 5.32e-114       1.19 0.912 0.591 7.29e-110 0       LDHB     
-# 2 1.31e- 83       2.35 0.439 0.11  1.79e- 79 0       CCR7     
-# 3 2.61e- 78       1.06 0.85  0.403 3.58e- 74 0       CD3D     
-# 4 5.89e- 55       1.03 0.731 0.398 8.07e- 51 0       CD3E     
-# 5 3.91e- 50       2.11 0.338 0.104 5.36e- 46 0       LEF1     
-# 6 2.53e- 47       1.23 0.624 0.36  3.47e- 43 0       NOSIP    
-# 7 5.11e- 46       2.04 0.335 0.109 7.01e- 42 0       PRKCQ-AS1
-# 8 5.49e- 43       1.51 0.438 0.186 7.52e- 39 0       PIK3IP1  
-# 9 9.17e- 41       2.73 0.199 0.04  1.26e- 36 0       FHIT     
-# 10 1.26e- 33       1.32 0.39  0.177 1.72e- 29 0       TCF7     
-# # ℹ 7,014 more rows
-# # ℹ Use `print(n = ...)` to see more rows
+# p_val  avg_log2FC  pct.1  pct.2  p_val_adj  cluster gene     
+
 
 cluster0.markers <- FindMarkers(pbmc, ident.1 = 0, logfc.threshold = 0.25, test.use = "roc", only.pos = TRUE)
 VlnPlot(pbmc, features = c("MS4A1", "CD79A"))
