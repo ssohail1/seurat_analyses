@@ -15,15 +15,15 @@ library(ggplot2)
 # 
 # # Pseudoalignment and counting
 # ## system("kb count -i index.idx -g t2g.txt -x 10xv3 -o output --filter bustools -t 2 pbmc_1k_v3_fastqs/pbmc_1k_v3_S1_L001_R1_001.fastq.gz pbmc_1k_v3_fastqs/pbmc_1k_v3_S1_L001_R2_001.fastq.gz pbmc_1k_v3_fastqs/pbmc_1k_v3_S1_L002_R1_001.fastq.gz pbmc_1k_v3_fastqs/pbmc_1k_v3_S1_L002_R2_001.fastq.gz",intern=TRUE)
-# system("kb count -i index.idx -g t2g.txt -f1 /Users/sidrasohail/Downloads/lungCan_data_seurat/Mus_musculus.GRCm39.dna.primary_assembly.fa.gz -x 10xv3 -o output --filter bustools -t 17 /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507943_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507943_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507945_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507945_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507947_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507947_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507948_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507948_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507949_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507949_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507950_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507950_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507951_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507951_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507952_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507952_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507953_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507953_S1_R2_001.fastq.gz  /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507954_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507954_S1_R2_001.fastq.gz  /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507955_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507955_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507956_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507956_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507957_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507957_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507958_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507958_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507959_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507959_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507960_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507960_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507961_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507961_S1_R2_001.fastq.gz",intern=TRUE)
-# /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507943_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507943_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507945_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507945_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507947_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507947_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507948_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507948_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507949_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507949_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507950_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507950_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507951_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507951_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507952_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507952_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507953_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507953_S1_R2_001.fastq.gz  /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507954_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507954_S1_R2_001.fastq.gz  /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507955_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507955_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507956_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507956_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507957_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507957_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507958_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507958_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507959_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507959_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507960_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507960_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507961_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507961_S1_R2_001.fastq.gz
+# system("kb count -i index.idx -g t2g.txt -f1 ./data/Mus_musculus.GRCm39.dna.primary_assembly.fa.gz -x 10xv3 -o output --filter bustools -t 17 ./data/SRR19507943_S1_R1_001.fastq.gz ./data/SRR19507943_S1_R2_001.fastq.gz ./data/SRR19507945_S1_R1_001.fastq.gz ./data/SRR19507945_S1_R2_001.fastq.gz ./data/SRR19507947_S1_R1_001.fastq.gz ./data/SRR19507947_S1_R2_001.fastq.gz ./data/SRR19507948_S1_R1_001.fastq.gz ./data/SRR19507948_S1_R2_001.fastq.gz ./data/SRR19507949_S1_R1_001.fastq.gz ./data/SRR19507949_S1_R2_001.fastq.gz ./data/SRR19507950_S1_R1_001.fastq.gz ./data/SRR19507950_S1_R2_001.fastq.gz ./data/SRR19507951_S1_R1_001.fastq.gz ./data/SRR19507951_S1_R2_001.fastq.gz ./data/SRR19507952_S1_R1_001.fastq.gz ./data/SRR19507952_S1_R2_001.fastq.gz ./data/SRR19507953_S1_R1_001.fastq.gz ./data/SRR19507953_S1_R2_001.fastq.gz  ./data/SRR19507954_S1_R1_001.fastq.gz ./data/SRR19507954_S1_R2_001.fastq.gz  ./data/SRR19507955_S1_R1_001.fastq.gz ./data/SRR19507955_S1_R2_001.fastq.gz ./data/SRR19507956_S1_R1_001.fastq.gz ./data/SRR19507956_S1_R2_001.fastq.gz ./data/SRR19507957_S1_R1_001.fastq.gz ./data/SRR19507957_S1_R2_001.fastq.gz ./data/SRR19507958_S1_R1_001.fastq.gz ./data/SRR19507958_S1_R2_001.fastq.gz ./data/SRR19507959_S1_R1_001.fastq.gz ./data/SRR19507959_S1_R2_001.fastq.gz ./data/SRR19507960_S1_R1_001.fastq.gz ./data/SRR19507960_S1_R2_001.fastq.gz ./data/SRR19507961_S1_R1_001.fastq.gz ./data/SRR19507961_S1_R2_001.fastq.gz",intern=TRUE)
+# ./data/SRR19507943_S1_R1_001.fastq.gz ./data/SRR19507943_S1_R2_001.fastq.gz ./data/SRR19507945_S1_R1_001.fastq.gz ./data/SRR19507945_S1_R2_001.fastq.gz ./data/SRR19507947_S1_R1_001.fastq.gz ./data/SRR19507947_S1_R2_001.fastq.gz ./data/SRR19507948_S1_R1_001.fastq.gz ./data/SRR19507948_S1_R2_001.fastq.gz ./data/SRR19507949_S1_R1_001.fastq.gz ./data/SRR19507949_S1_R2_001.fastq.gz ./data/SRR19507950_S1_R1_001.fastq.gz ./data/SRR19507950_S1_R2_001.fastq.gz ./data/SRR19507951_S1_R1_001.fastq.gz ./data/SRR19507951_S1_R2_001.fastq.gz ./data/SRR19507952_S1_R1_001.fastq.gz ./data/SRR19507952_S1_R2_001.fastq.gz ./data/SRR19507953_S1_R1_001.fastq.gz ./data/SRR19507953_S1_R2_001.fastq.gz  ./data/SRR19507954_S1_R1_001.fastq.gz ./data/SRR19507954_S1_R2_001.fastq.gz  ./data/SRR19507955_S1_R1_001.fastq.gz ./data/SRR19507955_S1_R2_001.fastq.gz ./data/SRR19507956_S1_R1_001.fastq.gz ./data/SRR19507956_S1_R2_001.fastq.gz ./data/SRR19507957_S1_R1_001.fastq.gz ./data/SRR19507957_S1_R2_001.fastq.gz ./data/SRR19507958_S1_R1_001.fastq.gz ./data/SRR19507958_S1_R2_001.fastq.gz ./data/SRR19507959_S1_R1_001.fastq.gz ./data/SRR19507959_S1_R2_001.fastq.gz ./data/SRR19507960_S1_R1_001.fastq.gz ./data/SRR19507960_S1_R2_001.fastq.gz ./data/SRR19507961_S1_R1_001.fastq.gz ./data/SRR19507961_S1_R2_001.fastq.gz
 
 ## first build the index with command 'kallisto index -i "name_of_output_indexfile.idx' [.idx is optional] FASTA-file(s)
-#~/Downloads/kallisto/kallisto index -i mouseind.idx ~/Downloads/lungCan_data_seurat/Mus_musculus.GRCm39.dna.primary_assembly.fa.gz
+# kallisto index -i mouseind.idx ~/Downloads/lungCan_data_seurat/Mus_musculus.GRCm39.dna.primary_assembly.fa.gz
 
 ## then run kallisto on paired or single-end FASTQ files
 # kallisto quant -i indexfilename -o output pairA_1.fastq pairA_2.fastq pairB_1.fastq pairB_2.fastq
-# ~/Downloads/kallisto/kallisto quant -i mouseind.idx -o output /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507943_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507943_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507945_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507945_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507947_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507947_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507948_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507948_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507949_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507949_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507950_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507950_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507951_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507951_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507952_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507952_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507953_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507953_S1_R2_001.fastq.gz  /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507954_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507954_S1_R2_001.fastq.gz  /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507955_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507955_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507956_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507956_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507957_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507957_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507958_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507958_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507959_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507959_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507960_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507960_S1_R2_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507961_S1_R1_001.fastq.gz /Users/sidrasohail/Downloads/lungCan_data_seurat/SRR19507961_S1_R2_001.fastq.gz
+# kallisto quant -i mouseind.idx -o output ./data/SRR19507943_S1_R1_001.fastq.gz ./data/SRR19507943_S1_R2_001.fastq.gz ./data/SRR19507945_S1_R1_001.fastq.gz ./data/SRR19507945_S1_R2_001.fastq.gz ./data/SRR19507947_S1_R1_001.fastq.gz ./data/SRR19507947_S1_R2_001.fastq.gz ./data/SRR19507948_S1_R1_001.fastq.gz ./data/SRR19507948_S1_R2_001.fastq.gz ./data/SRR19507949_S1_R1_001.fastq.gz ./data/SRR19507949_S1_R2_001.fastq.gz ./data/SRR19507950_S1_R1_001.fastq.gz ./data/SRR19507950_S1_R2_001.fastq.gz ./data/SRR19507951_S1_R1_001.fastq.gz ./data/SRR19507951_S1_R2_001.fastq.gz ./data/SRR19507952_S1_R1_001.fastq.gz ./data/SRR19507952_S1_R2_001.fastq.gz ./data/SRR19507953_S1_R1_001.fastq.gz ./data/SRR19507953_S1_R2_001.fastq.gz  ./data/SRR19507954_S1_R1_001.fastq.gz ./data/SRR19507954_S1_R2_001.fastq.gz  ./data/SRR19507955_S1_R1_001.fastq.gz ./data/SRR19507955_S1_R2_001.fastq.gz ./data/SRR19507956_S1_R1_001.fastq.gz ./data/SRR19507956_S1_R2_001.fastq.gz ./data/SRR19507957_S1_R1_001.fastq.gz ./data/SRR19507957_S1_R2_001.fastq.gz ./data/SRR19507958_S1_R1_001.fastq.gz ./data/SRR19507958_S1_R2_001.fastq.gz ./data/SRR19507959_S1_R1_001.fastq.gz ./data/SRR19507959_S1_R2_001.fastq.gz ./data/SRR19507960_S1_R1_001.fastq.gz ./data/SRR19507960_S1_R2_001.fastq.gz ./data/SRR19507961_S1_R1_001.fastq.gz ./data/SRR19507961_S1_R2_001.fastq.gz
 
 
 # Basic QC
@@ -59,14 +59,13 @@ ggplot(lib_sat, aes(nCount, nGene)) +
 
 summary(tot_counts)
 
-#' @rdname knee_plot
-#' @param mat Gene count matrix, a dgCMatrix.
-#' @return `get_knee_df` returns a tibble with two columns: \code{total} for 
-#' total UMI counts for each barcode, and \code{rank} for rank of the total 
-#' counts, with number 1 for the barcode with the most counts.
-#' @export
-#' @importFrom dplyr row_number desc arrange
-#' @importFrom Matrix colSums
+# knee_plot
+# mat input is Gene count matrix, a dgCMatrix.
+# get_knee_df returns a tibble with two columns: total column for 
+# total UMI counts for each barcode, and rank column for rank of the total 
+# counts, with number 1 for the barcode with the most counts.
+# library dplyr row_number desc arrange
+# library Matrix colSums
 get_knee_df <- function(mat) {
   total <- rank <- NULL
   tibble(total = Matrix::colSums(mat),
@@ -76,17 +75,17 @@ get_knee_df <- function(mat) {
     arrange(rank)
 }
 
-#' @rdname knee_plot
-#' @param df The data frame from \code{\link{get_knee_df}}.
-#' @param lower Minimum total UMI counts for barcode for it to be considered
-#' when calculating the inflection point; this helps to avoid the noisy part of
-#' the curve for barcodes with very few counts.
-#' @return `get_inflection` returns a \code{numeric(1)} for the total UMI count 
-#' at the inflection point.
-#' @note Code in part adapted from \code{barcodeRanks} from \code{DropetUtils}.
-#' @export
-#' @importFrom dplyr transmute
-#' 
+# knee_plot
+# df input is data frame from get_knee_df.
+# lower input is minimum total UMI counts for barcode for it to be considered
+# when calculating the inflection point; this helps to avoid the noisy part of
+# the curve for barcodes with very few counts. = filtering barcodes with very few counts by setting min threshold
+# get_inflection returns a numeric number for the total UMI count 
+# at the inflection point.
+# Code in part adapted from barcodeRanks from DropetUtils.
+
+# library dplyr transmute
+
 get_inflection <- function(df, lower = 100) {
   log_total <- log_rank <- total <-  NULL
   df_fit <- df %>% 
@@ -98,19 +97,19 @@ get_inflection <- function(df, lower = 100) {
   10^(df_fit$log_total[right.edge])
 }
 
-#' Plot the transposed knee plot and inflection point
-#' 
-#' Plot a transposed knee plot, showing the inflection point and
-#' the number of remaining cells after inflection point filtering. It's
-#' transposed since it's more generalizable to multi-modal data. Taken from the 
-#' BUSpaRse package.
-#' 
-#' @param df The data frame from \code{\link{get_knee_df}}.
-#' @param inflection Output of \code{\link{get_inflection}}.
-#' @return `knee_plot` returns a \code{ggplot2} object.
-#' @export
-#' @importFrom ggplot2 ggplot aes geom_path geom_vline geom_hline 
-#' scale_x_log10 scale_y_log10 labs annotation_logticks geom_text
+# Plot the transposed knee plot and inflection point
+
+# Plot a transposed knee plot, showing the inflection point and
+# the number of remaining cells after inflection point filtering. It's
+# transposed since it's more generalizable to multi-modal data. Taken from the 
+# BUSpaRse package.
+
+# df input is the data frame from get_knee_df.
+# inflection input is output of get_inflection.
+# knee_plot returns a ggplot2 object.
+
+# library ggplot2 ggplot aes geom_path geom_vline geom_hline 
+# scale_x_log10 scale_y_log10 labs annotation_logticks geom_text
 knee_plot <- function(df, inflection) {
   total <- rank_cutoff <- NULL
   annot <- tibble(inflection = inflection,
@@ -210,10 +209,9 @@ LabelPoints(plot = plot1, points = top10, repel = TRUE)
 all.genes <- rownames(pbmc)
 pbmc <- ScaleData(pbmc, features = all.genes)
 # The scaling does not affect PCA or clustering results. 
-# However, Seurat heatmaps (produced as shown below with DoHeatmap) 
-# require genes in the heatmap to be scaled so that 
+# However, Seurat heatmaps require genes in the heatmap to be scaled so that 
 # highly-expressed genes don’t dominate. To make sure we don’t leave any genes 
-# out of the heatmap later, we are scaling all genes in this tutorial.
+# out of the heatmap later, we scale all genes
 
 
 # Principal component analysis
@@ -228,7 +226,7 @@ VizDimLoadings(pbmc, dims = 1:2, reduction = "pca")
 options(repr.plot.width=7, repr.plot.height=6)
 FeaturePlot(pbmc, reduction = "pca", feature = "CST3")
 
-# Determining dimensionality
+# Determining dimensionality with ElbowPlot
 options(repr.plot.width=9, repr.plot.height=6)
 ElbowPlot(pbmc)
 
@@ -306,6 +304,7 @@ pbmc <- RenameIdents(pbmc, new.cluster.ids)
 DimPlot(pbmc, reduction = "umap", label = TRUE, pt.size = 0.5, label.size = 6) + NoLegend()
 
 
+# Download publicly available data 
 ## replicate with full single-cell dataset
                
 # Before Seurat - downloading data from Single-cell RNA sequencing reveals myeloid and T cell co-stimulation mediated by IL-7 anti-cancer immunotherapy study
@@ -316,14 +315,13 @@ DimPlot(pbmc, reduction = "umap", label = TRUE, pt.size = 0.5, label.size = 6) +
 
 # for sample in $(cat SRR_Acc_List.txt):
 #   do
-## ~/sratoolkit.3.0.7-mac64/bin/prefetch ${sample}
-# prefetch ${sample}
-# done
+#   prefetch ${sample}
+#   done
 
 # for sample in $(cat SRR_Acc_List.txt):
-# do
-# fastq-dump -I --split-files ~/Downloads/lungCan_data_seurat/${sample}/${sample}.sra
-# done
+#   do
+#   fastq-dump -I --split-files ${sample}/${sample}.sra
+#   done
 
 
 
