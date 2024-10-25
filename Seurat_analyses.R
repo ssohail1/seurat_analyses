@@ -107,7 +107,7 @@ pbmc <- RunUMAP(pbmc, dims = 1:10)
 #         10:12:04 Optimization finished
 
 DimPlot(pbmc, reduction = "umap")
-saveRDS(pbmc, file = "~/Downloads/filtered_gene_bc_matrices/output/pbmc_tutorial.rds")
+saveRDS(pbmc, file = "./data/output/pbmc_tutorial.rds")
 
 #### Finding differentially expressed features (cluster biomarkers) ####
 
@@ -159,5 +159,5 @@ DimPlot(pbmc, reduction = "umap", label = TRUE, pt.size = 0.5) + NoLegend()
 library(ggplot2)
 plot <- DimPlot(pbmc, reduction = "umap", label = TRUE, label.size = 4.5) + xlab("UMAP 1") + ylab("UMAP 2") +
   theme(axis.title = element_text(size = 18), legend.text = element_text(size = 18)) + guides(colour = guide_legend(override.aes = list(size = 10)))
-ggsave(filename = "~/Downloads/filtered_gene_bc_matrices/output/images/pbmc_umap.jpg", height = 7, width = 12, plot = plot, quality = 50)
+ggsave(filename = "./data/output/images/pbmc_umap.jpg", height = 7, width = 12, plot = plot, quality = 50)
 
