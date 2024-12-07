@@ -1,7 +1,7 @@
 # Seurat analyses
-omics analyses using Seurat
+omics analysis using Seurat
 ## Software Required
 - R
   - [Seurat package](https://satijalab.org/seurat/)
 - Python
-- sratoolkit to retrieve data
+- [sratoolkit](https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit) to retrieve data
