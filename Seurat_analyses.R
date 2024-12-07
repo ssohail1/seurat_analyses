@@ -81,30 +81,10 @@ head(Idents(pbmc), 5)
 
 # Runs the Uniform Manifold Approximation and Projection (UMAP) dimensional reduction technique 
 pbmc <- RunUMAP(pbmc, dims = 1:10)
-# note that you can set `label = TRUE` or use the LabelClusters function to help label
-# individual clusters
+# note that you can set `label = TRUE` or use the LabelClusters function to help label individual clusters
 
 # Warning: The default method for RunUMAP has changed from calling Python UMAP via reticulate to the R-native UWOT using the cosine metric
 # To use Python UMAP via reticulate, set umap.method to 'umap-learn' and metric to 'correlation'
-# This message will be shown once per session
-# 10:12:00 UMAP embedding parameters a = 0.9922 b = 1.112
-# 10:12:00 Read 2638 rows and found 10 numeric columns
-# 10:12:00 Using Annoy for neighbor search, n_neighbors = 30
-# 10:12:00 Building Annoy index with metric = cosine, n_trees = 50
-# 0%   10   20   30   40   50   60   70   80   90   100%
-#   [----|----|----|----|----|----|----|----|----|----|
-#      **************************************************|
-#      10:12:00 Writing NN index file to temp file /var/folders/qw/jxd88n696kzf42ry24gryqwm0000gp/T//RtmpmKmrdB/filec03b9094c48
-#    10:12:00 Searching Annoy index using 1 thread, search_k = 3000
-#    10:12:01 Annoy recall = 100%
-#    10:12:01 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30
-#    10:12:01 Initializing from normalized Laplacian + noise (using RSpectra)
-#    10:12:01 Commencing optimization for 500 epochs, with 106310 positive edges
-#    Using method 'umap'
-#    0%   10   20   30   40   50   60   70   80   90   100%
-#      [----|----|----|----|----|----|----|----|----|----|
-#         **************************************************|
-#         10:12:04 Optimization finished
 
 DimPlot(pbmc, reduction = "umap")
 saveRDS(pbmc, file = "./data/output/pbmc_tutorial.rds")
